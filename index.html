@@ -620,49 +620,32 @@
   <span id="toast-msg">Done!</span>
 </div>
 
-<!-- ── POST-LOAD: observers + section tracking ── -->
+<!-- ── POST-LOAD SCRIPTS ── -->
 <script>
   ampInit();
 
-  // Time on page
-  var pageLoadTime = Date.now();
-  window.addEventListener('beforeunload', function() {
-    ampTrack('Time on Page', { seconds: Math.round((Date.now() - pageLoadTime) / 1000) });
-  });
-  setInterval(function() {
-    ampTrack('Page Heartbeat', { seconds_elapsed: Math.round((Date.now() - pageLoadTime) / 1000) });
-  }, 30000);
-
-  // 6. Pricing Plan Viewed — fires once when pricing section enters view
+  // Pricing Plan Viewed — fires once when user scrolls to pricing
+  // Signals purchase intent; feeds the top of the funnel
   var seen = new Set();
   var sectionObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting && !seen.has(entry.target.id)) {
         seen.add(entry.target.id);
         if (entry.target.id === 'pricing') {
-          ampTrack('Pricing Plan Viewed', { time_since_load: Math.round((Date.now() - pageLoadTime) / 1000) });
+          ampTrack('Pricing Plan Viewed', { plan: 'all' });
         }
         if (entry.target.id === 'products') {
-          ampTrack('Products Section Viewed', { time_since_load: Math.round((Date.now() - pageLoadTime) / 1000) });
+          ampTrack('Product Catalogue Viewed', {});
         }
       }
     });
   }, { threshold: 0.3 });
-  ['hero','products','pricing','signup'].forEach(function(id) {
+  ['products','pricing'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) sectionObserver.observe(el);
   });
 
-  // Scroll depth
-  var reached = new Set();
-  window.addEventListener('scroll', function() {
-    var pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    [25,50,75,100].forEach(function(d) {
-      if (pct >= d && !reached.has(d)) { reached.add(d); ampTrack('Scroll Depth', { percent: d }); }
-    });
-  });
-
-  // Reveal on scroll
+  // Reveal animation on scroll (UI only, no tracking)
   var revealObs = new IntersectionObserver(function(entries) {
     entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.12 });
