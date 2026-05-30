@@ -8,13 +8,11 @@
   <!-- Amplitude SDK -->
   <script src="https://cdn.amplitude.com/libs/analytics-browser-2.9.3-min.js.gz"></script>
 
-  <!-- Google Fonts: Clash Display + Satoshi feel via Outfit + Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
 
   <style>
-    /* ── TOKENS ── */
     :root {
       --bg:        #07080a;
       --surface:   #0f1114;
@@ -29,115 +27,59 @@
       --font-head: 'Outfit', sans-serif;
       --font-body: 'Plus Jakarta Sans', sans-serif;
     }
-
-    /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── ASSESSMENT BANNER ── */
     .assessment-banner {
       background: linear-gradient(90deg, #0f1114 0%, rgba(79,255,176,0.08) 50%, #0f1114 100%);
       border-bottom: 1px solid rgba(79,255,176,0.2);
-      text-align: center;
-      padding: 9px 20px;
-      font-family: var(--font-head);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      position: relative;
-      z-index: 101;
+      text-align: center; padding: 9px 20px;
+      font-family: var(--font-head); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); z-index: 101; position: relative;
     }
-    .assessment-banner span {
-      opacity: 0.5; color: var(--text); margin: 0 12px;
-    }
+    .assessment-banner span { opacity: 0.5; color: var(--text); margin: 0 12px; }
 
-    /* ── NAV ── */
     nav {
-      position: sticky; top: 0; left: 0; right: 0; z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 16px 48px;
-      background: rgba(7,8,10,0.9);
-      backdrop-filter: blur(16px);
+      background: rgba(7,8,10,0.9); backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-    .logo {
-      font-family: var(--font-head);
-      font-weight: 900; font-size: 1.5rem;
-      letter-spacing: -0.04em;
-    }
+    .logo { font-family: var(--font-head); font-weight: 900; font-size: 1.5rem; letter-spacing: -0.04em; }
     .logo span { color: var(--accent); }
     .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a {
-      font-size: 0.875rem; font-weight: 500; color: var(--muted);
-      transition: color .2s;
-    }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--muted); transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
     .nav-cta { display: flex; gap: 12px; }
 
-    /* ── BUTTONS ── */
     .btn {
-      font-family: var(--font-body);
-      font-weight: 600; font-size: 0.875rem;
-      padding: 10px 22px; border-radius: 9px;
-      cursor: pointer; border: none;
-      transition: transform .15s, box-shadow .2s, background .2s, opacity .2s;
-      letter-spacing: 0.01em;
+      font-family: var(--font-body); font-weight: 600; font-size: 0.875rem;
+      padding: 10px 22px; border-radius: 9px; cursor: pointer; border: none;
+      transition: transform .15s, box-shadow .2s, background .2s, opacity .2s; letter-spacing: 0.01em;
     }
     .btn:active { transform: scale(0.97); }
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
+    .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
     .btn-ghost:hover { border-color: var(--muted); background: var(--surface2); }
-    .btn-primary {
-      background: var(--accent);
-      color: #07080a;
-      font-weight: 700;
-    }
-    .btn-primary:hover {
-      background: #6fffbe;
-      box-shadow: 0 0 28px rgba(79,255,176,0.4);
-    }
-    .btn-danger {
-      background: var(--accent2);
-      color: #fff;
-      font-weight: 700;
-    }
-    .btn-danger:hover {
-      box-shadow: 0 0 28px rgba(255,79,109,0.4);
-      opacity: 0.9;
-    }
+    .btn-primary { background: var(--accent); color: #07080a; font-weight: 700; }
+    .btn-primary:hover { background: #6fffbe; box-shadow: 0 0 28px rgba(79,255,176,0.4); }
+    .btn-danger { background: var(--accent2); color: #fff; font-weight: 700; }
+    .btn-danger:hover { box-shadow: 0 0 28px rgba(255,79,109,0.4); opacity: 0.9; }
 
-    /* ── HERO ── */
     #hero {
-      min-height: 100vh;
-      display: flex; flex-direction: column;
+      min-height: 100vh; display: flex; flex-direction: column;
       justify-content: center; align-items: flex-start;
-      padding: 100px 48px 80px;
-      position: relative; overflow: hidden;
+      padding: 100px 48px 80px; position: relative; overflow: hidden;
     }
     .hero-grid-bg {
       position: absolute; inset: 0; z-index: 0;
-      background-image:
-        linear-gradient(rgba(79,255,176,0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(79,255,176,0.035) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(79,255,176,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(79,255,176,0.035) 1px, transparent 1px);
       background-size: 56px 56px;
     }
     .hero-blob {
-      position: absolute; right: -80px; top: 50%;
-      transform: translateY(-50%);
+      position: absolute; right: -80px; top: 50%; transform: translateY(-50%);
       width: 700px; height: 700px; border-radius: 50%;
       background: radial-gradient(circle, rgba(79,143,255,0.1) 0%, rgba(79,255,176,0.06) 40%, transparent 70%);
       pointer-events: none;
@@ -145,293 +87,95 @@
     .hero-content { position: relative; z-index: 1; max-width: 760px; }
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--font-head);
-      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
-      text-transform: uppercase;
-      background: rgba(79,255,176,0.08);
-      color: var(--accent);
-      border: 1px solid rgba(79,255,176,0.25);
-      padding: 7px 16px; border-radius: 999px;
-      margin-bottom: 30px;
-      animation: fadeUp .6s both;
+      font-family: var(--font-head); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; background: rgba(79,255,176,0.08); color: var(--accent);
+      border: 1px solid rgba(79,255,176,0.25); padding: 7px 16px; border-radius: 999px;
+      margin-bottom: 30px; animation: fadeUp .6s both;
     }
     .hero-tag::before { content:''; width:7px; height:7px; border-radius:50%; background:var(--accent); display:block; }
-    h1 {
-      font-family: var(--font-head);
-      font-size: clamp(3rem, 7vw, 5.8rem);
-      font-weight: 900;
-      line-height: 1.02;
-      letter-spacing: -0.045em;
-      margin-bottom: 24px;
-      animation: fadeUp .7s .1s both;
-    }
+    h1 { font-family: var(--font-head); font-size: clamp(3rem, 7vw, 5.8rem); font-weight: 900; line-height: 1.02; letter-spacing: -0.045em; margin-bottom: 24px; animation: fadeUp .7s .1s both; }
     h1 em { font-style: normal; color: var(--accent); }
     h1 .dim { color: var(--muted); }
-    .hero-sub {
-      font-size: 1.1rem; font-weight: 300; color: var(--muted); max-width: 500px;
-      margin-bottom: 40px; line-height: 1.7;
-      animation: fadeUp .7s .2s both;
-    }
-    .hero-actions {
-      display: flex; gap: 14px; flex-wrap: wrap;
-      animation: fadeUp .7s .3s both;
-    }
+    .hero-sub { font-size: 1.1rem; font-weight: 300; color: var(--muted); max-width: 500px; margin-bottom: 40px; line-height: 1.7; animation: fadeUp .7s .2s both; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeUp .7s .3s both; }
     .hero-actions .btn { font-size: 1rem; padding: 14px 30px; }
-    .hero-stats {
-      display: flex; gap: 48px; margin-top: 72px;
-      animation: fadeUp .7s .4s both;
-    }
-    .stat-num {
-      font-family: var(--font-head);
-      font-size: 2.2rem; font-weight: 900; color: var(--text);
-      letter-spacing: -0.04em;
-    }
+    .hero-stats { display: flex; gap: 48px; margin-top: 72px; animation: fadeUp .7s .4s both; }
+    .stat-num { font-family: var(--font-head); font-size: 2.2rem; font-weight: 900; color: var(--text); letter-spacing: -0.04em; }
     .stat-num span { color: var(--accent); }
     .stat-label { font-size: 0.78rem; font-weight: 500; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-    /* ── SECTION COMMON ── */
     section { padding: 100px 48px; }
-    .section-label {
-      font-family: var(--font-head);
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--accent);
-      margin-bottom: 12px;
-    }
-    h2 {
-      font-family: var(--font-head);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 800; letter-spacing: -0.035em;
-      line-height: 1.08;
-    }
+    .section-label { font-family: var(--font-head); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+    h2 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08; }
 
-    /* ── PRODUCTS ── */
     #products { background: var(--surface); }
-    .products-header {
-      display: flex; justify-content: space-between; align-items: flex-end;
-      margin-bottom: 48px; gap: 20px; flex-wrap: wrap;
-    }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .product-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
-      border-color: #333;
-    }
-    .product-img {
-      width: 100%; height: 190px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3.8rem;
-      background: var(--surface2);
-    }
+    .products-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; gap: 20px; flex-wrap: wrap; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+    .product-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: transform .2s, box-shadow .2s; }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.5); border-color: #333; }
+    .product-img { width: 100%; height: 190px; display: flex; align-items: center; justify-content: center; font-size: 3.8rem; background: var(--surface2); }
     .product-info { padding: 18px; }
-    .product-name {
-      font-family: var(--font-head);
-      font-size: 1rem; font-weight: 700; letter-spacing: -0.01em;
-      margin-bottom: 5px;
-    }
+    .product-name { font-family: var(--font-head); font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px; }
     .product-desc { font-size: 0.82rem; font-weight: 300; color: var(--muted); margin-bottom: 16px; }
     .product-footer { display: flex; align-items: center; justify-content: space-between; }
-    .product-price {
-      font-family: var(--font-head);
-      font-size: 1.25rem; font-weight: 800; color: var(--accent);
-    }
-    .btn-cart {
-      font-family: var(--font-body);
-      font-size: 0.8rem; font-weight: 600; padding: 8px 16px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--text); border-radius: 8px; cursor: pointer;
-      transition: background .2s, border-color .2s, color .2s;
-    }
+    .product-price { font-family: var(--font-head); font-size: 1.25rem; font-weight: 800; color: var(--accent); }
+    .btn-cart { font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; padding: 8px 16px; background: var(--surface2); border: 1px solid var(--border); color: var(--text); border-radius: 8px; cursor: pointer; transition: background .2s, border-color .2s, color .2s; }
     .btn-cart:hover { background: var(--accent); color: #07080a; border-color: var(--accent); }
-    .cart-badge {
-      display: inline-flex; align-items: center; justify-content: center;
-      background: var(--accent2); color: #fff;
-      font-size: 0.65rem; font-weight: 700;
-      width: 18px; height: 18px; border-radius: 50%;
-      margin-left: 5px; vertical-align: middle;
-      display: none;
-    }
+    .cart-badge { display: none; align-items: center; justify-content: center; background: var(--accent2); color: #fff; font-size: 0.65rem; font-weight: 700; width: 18px; height: 18px; border-radius: 50%; margin-left: 5px; vertical-align: middle; }
 
-    /* ── PRICING ── */
     .pricing-header { text-align: center; margin-bottom: 56px; }
     .pricing-header p { color: var(--muted); margin-top: 12px; font-size: 1rem; font-weight: 300; }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px; max-width: 1000px; margin: 0 auto;
-    }
-    .pricing-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 30px;
-      position: relative;
-      transition: transform .2s, box-shadow .2s;
-    }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+    .pricing-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px 30px; position: relative; transition: transform .2s, box-shadow .2s; }
     .pricing-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.4); }
-    .pricing-card.popular {
-      border-color: var(--accent);
-      background: linear-gradient(160deg, rgba(79,255,176,0.06) 0%, var(--surface) 60%);
-    }
-    .popular-badge {
-      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-      background: var(--accent); color: #07080a;
-      font-family: var(--font-head);
-      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em;
-      text-transform: uppercase; padding: 4px 14px; border-radius: 999px;
-    }
-    .plan-name {
-      font-family: var(--font-head);
-      font-size: 0.85rem; font-weight: 700; color: var(--muted);
-      margin-bottom: 14px; letter-spacing: 0.08em; text-transform: uppercase;
-    }
-    .plan-price {
-      font-family: var(--font-head);
-      font-size: 3rem; font-weight: 900; line-height: 1; letter-spacing: -0.04em;
-      margin-bottom: 4px;
-    }
+    .pricing-card.popular { border-color: var(--accent); background: linear-gradient(160deg, rgba(79,255,176,0.06) 0%, var(--surface) 60%); }
+    .popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #07080a; font-family: var(--font-head); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 14px; border-radius: 999px; }
+    .plan-name { font-family: var(--font-head); font-size: 0.85rem; font-weight: 700; color: var(--muted); margin-bottom: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+    .plan-price { font-family: var(--font-head); font-size: 3rem; font-weight: 900; line-height: 1; letter-spacing: -0.04em; margin-bottom: 4px; }
     .plan-price span { font-size: 1rem; font-weight: 400; color: var(--muted); letter-spacing: 0; }
     .plan-desc { font-size: 0.85rem; font-weight: 300; color: var(--muted); margin-bottom: 24px; }
     .plan-features { list-style: none; margin-bottom: 30px; }
-    .plan-features li {
-      font-size: 0.875rem; font-weight: 400; padding: 8px 0;
-      border-bottom: 1px solid var(--border);
-      display: flex; gap: 10px; align-items: center;
-    }
+    .plan-features li { font-size: 0.875rem; padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center; }
     .plan-features li::before { content: '✓'; color: var(--accent); font-weight: 700; flex-shrink: 0; }
     .plan-features li.off { color: var(--muted); }
     .plan-features li.off::before { content: '×'; color: #333; }
 
-    /* ── SIGNUP SECTION ── */
     #signup { background: var(--surface); border-top: 1px solid var(--border); }
-    .signup-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 60px; align-items: center;
-      max-width: 1020px; margin: 0 auto;
-    }
+    .signup-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1020px; margin: 0 auto; }
     .signup-copy h2 { margin-bottom: 14px; }
     .signup-copy p { color: var(--muted); font-weight: 300; }
-    .form-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px;
-    }
-    .tabs {
-      display: flex; border-bottom: 1px solid var(--border);
-      margin-bottom: 28px; gap: 4px;
-    }
-    .tab {
-      font-family: var(--font-head); font-weight: 700;
-      font-size: 0.85rem; padding: 0 4px 12px; margin-right: 20px;
-      cursor: pointer; color: var(--muted);
-      border-bottom: 2px solid transparent;
-      transition: color .2s, border-color .2s;
-      white-space: nowrap;
-    }
+    .form-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 36px; }
+    .tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+    .tab { font-family: var(--font-head); font-weight: 700; font-size: 0.85rem; padding: 0 4px 12px; margin-right: 20px; cursor: pointer; color: var(--muted); border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; white-space: nowrap; }
     .tab.active { color: var(--accent); border-color: var(--accent); }
     .form-panel { display: none; }
     .form-panel.active { display: block; }
     .field { margin-bottom: 16px; }
-    .field label {
-      display: block; font-size: 0.78rem; font-weight: 600;
-      color: var(--muted); margin-bottom: 7px; letter-spacing: 0.04em; text-transform: uppercase;
-    }
-    .field input {
-      width: 100%; padding: 12px 16px;
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      border-radius: 9px; color: var(--text);
-      font-family: var(--font-body); font-size: 0.9rem; font-weight: 400;
-      transition: border-color .2s, box-shadow .2s;
-      outline: none;
-    }
+    .field label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--muted); margin-bottom: 7px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .field input { width: 100%; padding: 12px 16px; background: var(--surface2); border: 1px solid var(--border); border-radius: 9px; color: var(--text); font-family: var(--font-body); font-size: 0.9rem; transition: border-color .2s, box-shadow .2s; outline: none; }
     .field input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,255,176,0.1); }
     .field input::placeholder { color: #3a4050; }
-    .form-btn {
-      width: 100%; padding: 13px;
-      font-size: 0.95rem; border-radius: 9px;
-      margin-top: 6px;
-    }
-    .form-note {
-      text-align: center; font-size: 0.72rem; font-weight: 400;
-      color: var(--muted); margin-top: 14px;
-    }
+    .form-btn { width: 100%; padding: 13px; font-size: 0.95rem; border-radius: 9px; margin-top: 6px; }
+    .form-note { text-align: center; font-size: 0.72rem; color: var(--muted); margin-top: 14px; }
 
-    /* ── TOAST ── */
-    .toast {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 14px 20px;
-      font-size: 0.875rem; display: flex; gap: 10px; align-items: center;
-      transform: translateY(80px); opacity: 0;
-      transition: transform .3s, opacity .3s;
-      max-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
-    }
+    .toast { position: fixed; bottom: 28px; right: 28px; z-index: 999; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 20px; font-size: 0.875rem; display: flex; gap: 10px; align-items: center; transform: translateY(80px); opacity: 0; transition: transform .3s, opacity .3s; max-width: 320px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
     .toast.show { transform: translateY(0); opacity: 1; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 52px 48px 36px;
-    }
-    .footer-inner {
-      display: flex; justify-content: space-between;
-      align-items: flex-start; flex-wrap: wrap; gap: 36px;
-      margin-bottom: 40px;
-    }
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 52px 48px 36px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 36px; margin-bottom: 40px; }
     .footer-brand .logo { font-size: 1.25rem; margin-bottom: 10px; }
     .footer-brand p { font-size: 0.8rem; font-weight: 300; color: var(--muted); max-width: 200px; }
     .footer-links { display: flex; gap: 52px; flex-wrap: wrap; }
-    .footer-col h4 {
-      font-family: var(--font-head);
-      font-size: 0.68rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 14px;
-    }
-    .footer-col a {
-      display: block; font-size: 0.85rem; font-weight: 400;
-      color: #555f70; margin-bottom: 10px;
-      transition: color .2s;
-    }
+    .footer-col h4 { font-family: var(--font-head); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .footer-col a { display: block; font-size: 0.85rem; color: #555f70; margin-bottom: 10px; transition: color .2s; }
     .footer-col a:hover { color: var(--text); }
-    .footer-bottom {
-      padding-top: 20px;
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.72rem; color: var(--muted);
-      flex-wrap: wrap; gap: 8px;
-    }
-    .footer-assessment {
-      font-family: var(--font-head);
-      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent); opacity: 0.7;
-    }
+    .footer-bottom { padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: var(--muted); flex-wrap: wrap; gap: 8px; }
+    .footer-assessment { font-family: var(--font-head); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); opacity: 0.7; }
 
-    /* ── SCROLL REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s, transform .65s; }
     .reveal.visible { opacity: 1; transform: none; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       nav { padding: 14px 20px; }
       .nav-links { display: none; }
@@ -442,38 +186,77 @@
     }
   </style>
 
-  <!-- ── ALL JS DEFINED HERE so onclick attrs work ── -->
   <script>
-    // Amplitude – defined early so onclick handlers never throw
-    const AMPLITUDE_API_KEY = 'a4d262c3aecdb25a411f7ec325f93010'; // ⚠️ Replace before deploy
+    // ── AMPLITUDE INIT ──────────────────────────────────────────────
+    var AMPLITUDE_API_KEY = 'a4d262c3aecdb25a411f7ec325f93010';
 
     function _amp() { return window.amplitude; }
 
     function ampInit() {
       if (!_amp()) return;
       _amp().init(AMPLITUDE_API_KEY, {
-        defaultTracking: { sessions: true, pageViews: true, formInteractions: true, fileDownloads: false },
+        defaultTracking: { sessions: true, pageViews: true, formInteractions: false, fileDownloads: false },
       });
     }
 
+    // Core tracker
     function ampTrack(event, props) {
       try {
         if (!_amp()) return;
         _amp().track(event, Object.assign({ page: window.location.pathname, ts: Date.now() }, props || {}));
-      } catch(e) { /* silently swallow if SDK not ready */ }
+      } catch(e) {}
     }
 
-    // Cart
+    // ── MEANINGFUL EVENTS ──────────────────────────────────────────
+
+    // 1. Sign Up Clicked — fires wherever Sign Up appears
+    function trackSignUpClicked(location) {
+      ampTrack('Sign Up Clicked', { location: location });
+      scrollToSignup('signup');
+    }
+
+    // 2. Request Demo Clicked — fires wherever Request Demo appears
+    function trackRequestDemoClicked(location) {
+      ampTrack('Request Demo Clicked', { location: location });
+      scrollToSignup('demo');
+    }
+
+    // 3. Login Clicked
+    function trackLoginClicked(location) {
+      ampTrack('Login Clicked', { location: location });
+      scrollToSignup('login');
+    }
+
+    // 4. Add to Cart — fires with product name + price
     var cartCount = 0;
     function addToCart(product, price) {
       cartCount++;
       var badge = document.getElementById('cart-nav-badge');
       if (badge) { badge.style.display = 'inline-flex'; badge.textContent = cartCount; }
-      ampTrack('Add to Cart', { product: product, price: price, cart_total_items: cartCount });
+      ampTrack('Add to Cart', {
+        product_name: product,
+        product_price: price,
+        cart_total_items: cartCount
+      });
       showToast('🛒 ' + product + ' added to cart!');
     }
 
-    // Form tabs
+    // 5. Form Submitted — fires with form type (signup / login / demo)
+    function handleFormSubmit(formType) {
+      var msgs = {
+        signup: '🎉 Account created! (demo only)',
+        login:  '👋 Logged in! (demo only)',
+        demo:   '📅 Demo booked! We\'ll be in touch.'
+      };
+      ampTrack('Form Submitted', {
+        form_type: formType,
+        form_label: formType === 'signup' ? 'Sign Up' : formType === 'login' ? 'Login' : 'Request Demo'
+      });
+      showToast(msgs[formType] || 'Done!');
+    }
+
+    // ── SUPPORTING HELPERS ─────────────────────────────────────────
+
     function switchTab(tab) {
       ['signup','login','demo'].forEach(function(t) {
         var tabEl = document.getElementById('tab-' + t);
@@ -481,7 +264,6 @@
         if (tabEl) tabEl.classList.toggle('active', t === tab);
         if (panelEl) panelEl.classList.toggle('active', t === tab);
       });
-      ampTrack('Form Tab Switch', { tab: tab });
     }
 
     function scrollToSignup(tab) {
@@ -490,17 +272,6 @@
       setTimeout(function() { switchTab(tab || 'signup'); }, 420);
     }
 
-    function handleFormSubmit(formType) {
-      var msgs = {
-        signup: '🎉 Account created! (demo only)',
-        login:  '👋 Logged in! (demo only)',
-        demo:   '📅 Demo booked! We\'ll be in touch.'
-      };
-      ampTrack('Form Submit', { form: formType });
-      showToast(msgs[formType] || 'Done!');
-    }
-
-    // Toast
     var toastTimer;
     function showToast(msg) {
       var toast = document.getElementById('toast');
@@ -517,22 +288,22 @@
 
 <!-- ── ASSESSMENT BANNER ── -->
 <div class="assessment-banner">
-  BWB-MART Assessment
+  BWB-MART Assessment <span>✦</span> Amplitude Event Tracking Demo <span>✦</span> E-commerce Landing Page
 </div>
 
 <!-- ── NAV ── -->
 <nav>
   <div class="logo">Cart<span>ly</span></div>
   <div class="nav-links">
-    <a href="#products" onclick="ampTrack('Nav Click', {link:'Products'})">Products</a>
-    <a href="#pricing"  onclick="ampTrack('Nav Click', {link:'Pricing'})">Pricing</a>
-    <a href="#signup"   onclick="ampTrack('Nav Click', {link:'Sign Up'})">Sign Up</a>
+    <a href="#products">Products</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#signup">Sign Up</a>
   </div>
   <div class="nav-cta">
-    <button class="btn btn-ghost" onclick="scrollToSignup('login'); ampTrack('CTA Click', {button:'Login', location:'Nav'})">
+    <button class="btn btn-ghost" onclick="trackLoginClicked('Nav')">
       Login <span id="cart-nav-badge" class="cart-badge">0</span>
     </button>
-    <button class="btn btn-primary" onclick="scrollToSignup('signup'); ampTrack('CTA Click', {button:'Sign Up', location:'Nav'})">
+    <button class="btn btn-primary" onclick="trackSignUpClicked('Nav')">
       Sign Up Free
     </button>
   </div>
@@ -549,10 +320,10 @@
       Cartly gives your online store superpowers — blazing fast checkout, smart recommendations, and analytics that actually make sense.
     </p>
     <div class="hero-actions">
-      <button class="btn btn-primary" onclick="scrollToSignup('signup'); ampTrack('CTA Click', {button:'Sign Up', location:'Hero'})">
+      <button class="btn btn-primary" onclick="trackSignUpClicked('Hero')">
         Sign Up Free →
       </button>
-      <button class="btn btn-ghost" onclick="scrollToSignup('demo'); ampTrack('CTA Click', {button:'Request Demo', location:'Hero'})">
+      <button class="btn btn-ghost" onclick="trackRequestDemoClicked('Hero')">
         Request Demo
       </button>
     </div>
@@ -580,9 +351,7 @@
       <div class="section-label">Featured Products</div>
       <h2>Trending this week</h2>
     </div>
-    <button class="btn btn-ghost" onclick="ampTrack('CTA Click', {button:'View All Products', location:'Products Section'})">
-      View all →
-    </button>
+    <button class="btn btn-ghost">View all →</button>
   </div>
   <div class="products-grid reveal">
 
@@ -602,7 +371,7 @@
       <div class="product-img">🎮</div>
       <div class="product-info">
         <div class="product-name">Gaming Console</div>
-        <div class="product-desc">High Performance, 40hr battery. Works with all screens.</div>
+        <div class="product-desc">High performance, 40hr battery. Works with all screens.</div>
         <div class="product-footer">
           <div class="product-price">$98</div>
           <button class="btn-cart" onclick="addToCart('Gaming Console', 98)">Add to Cart</button>
@@ -614,8 +383,7 @@
       <div class="product-img">💻</div>
       <div class="product-info">
         <div class="product-name">Laptop Computer</div>
-        <div class="product-desc">Core i8, 40hr battery. ITB Storage.
-        </div>
+        <div class="product-desc">Core i8, 40hr battery. 1TB Storage.</div>
         <div class="product-footer">
           <div class="product-price">$980</div>
           <button class="btn-cart" onclick="addToCart('Laptop Computer', 980)">Add to Cart</button>
@@ -623,18 +391,18 @@
       </div>
     </div>
 
-     <div class="product-card">
+    <div class="product-card">
       <div class="product-img">👠</div>
       <div class="product-info">
-        <div class="product-name">Women's Red Stilleto</div>
-        <div class="product-desc">6inches high, Red, Suitable for corporate events.</div>
+        <div class="product-name">Women's Red Stiletto</div>
+        <div class="product-desc">6 inches high, red. Suitable for corporate events.</div>
         <div class="product-footer">
           <div class="product-price">$40</div>
-          <button class="btn-cart" onclick="addToCart('Women's Red Stlleto', 40)">Add to Cart</button>
+          <button class="btn-cart" onclick="addToCart('Women\'s Red Stiletto', 40)">Add to Cart</button>
         </div>
       </div>
     </div>
-    
+
     <div class="product-card">
       <div class="product-img">⌨️</div>
       <div class="product-info">
@@ -694,7 +462,7 @@
         <li class="off">Custom domain</li>
         <li class="off">Priority support</li>
       </ul>
-      <button class="btn btn-ghost form-btn" onclick="scrollToSignup('signup'); ampTrack('CTA Click', {button:'Get Started Free', location:'Pricing - Starter'})">
+      <button class="btn btn-ghost form-btn" onclick="trackSignUpClicked('Pricing - Starter')">
         Get Started Free
       </button>
     </div>
@@ -711,7 +479,7 @@
         <li>Abandoned cart recovery</li>
         <li class="off">Priority support</li>
       </ul>
-      <button class="btn btn-primary form-btn" onclick="scrollToSignup('signup'); ampTrack('CTA Click', {button:'Start Growth Plan', location:'Pricing - Growth'})">
+      <button class="btn btn-primary form-btn" onclick="trackSignUpClicked('Pricing - Growth')">
         Start Growth Plan
       </button>
     </div>
@@ -727,7 +495,7 @@
         <li>API access</li>
         <li>Custom integrations</li>
       </ul>
-      <button class="btn btn-danger form-btn" onclick="scrollToSignup('demo'); ampTrack('CTA Click', {button:'Request Demo', location:'Pricing - Pro'})">
+      <button class="btn btn-danger form-btn" onclick="trackRequestDemoClicked('Pricing - Pro')">
         Request Demo
       </button>
     </div>
@@ -756,20 +524,15 @@
       <div class="form-panel active" id="panel-signup">
         <div class="field">
           <label>Full Name</label>
-          <input type="text" placeholder="Jane Smith"
-            onfocus="ampTrack('Form Field Focus', {form:'signup', field:'name'})"
-            oninput="ampTrack('Form Field Input', {form:'signup', field:'name'})">
+          <input type="text" placeholder="Jane Smith">
         </div>
         <div class="field">
           <label>Email Address</label>
-          <input type="email" placeholder="jane@example.com"
-            onfocus="ampTrack('Form Field Focus', {form:'signup', field:'email'})"
-            oninput="ampTrack('Form Field Input', {form:'signup', field:'email'})">
+          <input type="email" placeholder="jane@example.com">
         </div>
         <div class="field">
           <label>Password</label>
-          <input type="password" placeholder="Min. 8 characters"
-            onfocus="ampTrack('Form Field Focus', {form:'signup', field:'password'})">
+          <input type="password" placeholder="Min. 8 characters">
         </div>
         <button class="btn btn-primary form-btn" onclick="handleFormSubmit('signup')">
           Create Free Account →
@@ -781,14 +544,11 @@
       <div class="form-panel" id="panel-login">
         <div class="field">
           <label>Email Address</label>
-          <input type="email" placeholder="jane@example.com"
-            onfocus="ampTrack('Form Field Focus', {form:'login', field:'email'})"
-            oninput="ampTrack('Form Field Input', {form:'login', field:'email'})">
+          <input type="email" placeholder="jane@example.com">
         </div>
         <div class="field">
           <label>Password</label>
-          <input type="password" placeholder="••••••••"
-            onfocus="ampTrack('Form Field Focus', {form:'login', field:'password'})">
+          <input type="password" placeholder="••••••••">
         </div>
         <button class="btn btn-primary form-btn" onclick="handleFormSubmit('login')">
           Login to Dashboard →
@@ -800,18 +560,15 @@
       <div class="form-panel" id="panel-demo">
         <div class="field">
           <label>Full Name</label>
-          <input type="text" placeholder="Jane Smith"
-            onfocus="ampTrack('Form Field Focus', {form:'demo', field:'name'})">
+          <input type="text" placeholder="Jane Smith">
         </div>
         <div class="field">
           <label>Work Email</label>
-          <input type="email" placeholder="jane@company.com"
-            onfocus="ampTrack('Form Field Focus', {form:'demo', field:'email'})">
+          <input type="email" placeholder="jane@company.com">
         </div>
         <div class="field">
           <label>Company Size</label>
-          <input type="text" placeholder="e.g. 10–50 employees"
-            onfocus="ampTrack('Form Field Focus', {form:'demo', field:'company_size'})">
+          <input type="text" placeholder="e.g. 10–50 employees">
         </div>
         <button class="btn btn-danger form-btn" onclick="handleFormSubmit('demo')">
           Book My Demo →
@@ -833,21 +590,21 @@
     <div class="footer-links">
       <div class="footer-col">
         <h4>Product</h4>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'Features'})">Features</a>
-        <a href="#pricing" onclick="ampTrack('Footer Link Click', {link:'Pricing'})">Pricing</a>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'Changelog'})">Changelog</a>
+        <a href="#">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#">Changelog</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'About'})">About</a>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'Blog'})">Blog</a>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'Careers'})">Careers</a>
+        <a href="#">About</a>
+        <a href="#">Blog</a>
+        <a href="#">Careers</a>
       </div>
       <div class="footer-col">
         <h4>Legal</h4>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'Privacy'})">Privacy</a>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'Terms'})">Terms</a>
-        <a href="#" onclick="ampTrack('Footer Link Click', {link:'Security'})">Security</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
       </div>
     </div>
   </div>
@@ -863,9 +620,8 @@
   <span id="toast-msg">Done!</span>
 </div>
 
-<!-- ── POST-LOAD OBSERVERS (safe to run after DOM) ── -->
+<!-- ── POST-LOAD: observers + section tracking ── -->
 <script>
-  // Init Amplitude now that DOM + SDK are both ready
   ampInit();
 
   // Time on page
@@ -877,16 +633,18 @@
     ampTrack('Page Heartbeat', { seconds_elapsed: Math.round((Date.now() - pageLoadTime) / 1000) });
   }, 30000);
 
-  // Section visibility
+  // 6. Pricing Plan Viewed — fires once when pricing section enters view
   var seen = new Set();
   var sectionObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
       if (entry.isIntersecting && !seen.has(entry.target.id)) {
         seen.add(entry.target.id);
-        ampTrack('Section Viewed', {
-          section: entry.target.id,
-          time_since_load: Math.round((Date.now() - pageLoadTime) / 1000)
-        });
+        if (entry.target.id === 'pricing') {
+          ampTrack('Pricing Plan Viewed', { time_since_load: Math.round((Date.now() - pageLoadTime) / 1000) });
+        }
+        if (entry.target.id === 'products') {
+          ampTrack('Products Section Viewed', { time_since_load: Math.round((Date.now() - pageLoadTime) / 1000) });
+        }
       }
     });
   }, { threshold: 0.3 });
