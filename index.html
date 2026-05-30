@@ -188,7 +188,7 @@
 
   <script>
     // ── AMPLITUDE INIT ──────────────────────────────────────────────
-    var AMPLITUDE_API_KEY = '781371b11a58f796cbe29ed7b5bfb608';
+    var AMPLITUDE_API_KEY = 'a4d262c3aecdb25a411f7ec325f93010';
 
     function _amp() { return window.amplitude; }
 
@@ -227,17 +227,40 @@
       scrollToSignup('login');
     }
 
-    // 4. Add to Cart — fires with product name + price
+    // 4. Add to Cart — fires with product, price, quantity, revenue
     var cartCount = 0;
+    var cartRevenue = 0;
+    var cartItems = {};
+
     function addToCart(product, price) {
       cartCount++;
+      cartRevenue += price;
+      cartItems[product] = (cartItems[product] || 0) + 1;
+      var quantity = cartItems[product];
+
       var badge = document.getElementById('cart-nav-badge');
       if (badge) { badge.style.display = 'inline-flex'; badge.textContent = cartCount; }
+
+      // Custom event with full ecommerce properties
       ampTrack('Add to Cart', {
         product_name: product,
         product_price: price,
-        cart_total_items: cartCount
+        quantity: quantity,
+        revenue: price * quantity,
+        cart_total_items: cartCount,
+        cart_total_revenue: cartRevenue
       });
+
+      // Native Amplitude Revenue event — powers template dashboards
+      try {
+        var revenueEvent = new window.amplitude.Revenue()
+          .setProductId(product)
+          .setPrice(price)
+          .setQuantity(1)
+          .setRevenue(price);
+        window.amplitude.revenue(revenueEvent);
+      } catch(e) {}
+
       showToast('🛒 ' + product + ' added to cart!');
     }
 
